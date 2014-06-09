@@ -60,6 +60,11 @@ class Template
     protected $js = array();
 
     /**
+     * @var array
+     */
+    protected $metaTags = array();
+
+    /**
      * @var string
      */
     protected $headerTemplate;
@@ -185,6 +190,23 @@ class Template
     }
 
     /**
+     * @param $name
+     * @param $content
+     */
+    public function setMetaTag($name, $content)
+    {
+        $this->metaTags[$name] = $content;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMetaTags()
+    {
+        return $this->metaTags;
+    }
+
+    /**
      * Shorthand get
      *
      * @param $name
@@ -247,6 +269,8 @@ class Template
 
         $css = $this->css;
         $js = $this->js;
+
+        $metaTags = $this->getMetaTags();
 
         if ($onlyBody === false) {
             include $this->getTemplatePath() . $this->getHeaderTemplate() . $this->getTemplateFileExtension();
