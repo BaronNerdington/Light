@@ -11,7 +11,7 @@ Because i wanted a simple, easy, non-overbloated routing system, autoloader and 
 How to use
 =====
 
-#H1 Make your own controller
+## Make your own controller
 
 ``` php
 
@@ -41,7 +41,7 @@ How to use
 
 ```
 
-#H1 run the application
+## Run the application
 
 ``` php
 
