@@ -79,4 +79,6 @@ Done!
 License
 ====
 
+This software is licensed under the terms of the MIT License.
+
 See License.md for details.
