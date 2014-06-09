@@ -8,6 +8,8 @@ Why Light?
 
 Because i wanted a simple, easy, non-overbloated routing system, autoloader and templating.
 
+This libray is developed further over time.
+
 How to use
 =====
 
