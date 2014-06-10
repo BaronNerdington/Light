@@ -43,7 +43,7 @@ class Autoloader
      */
     public function addNamespace($namespace)
     {
-        if (in_array($namespace, $this->namespaces) === true) {
+        if (in_array($namespace, $this->namespaces) === false) {
             $this->namespaces[] = $namespace;
         }
     }
