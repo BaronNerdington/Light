@@ -2,11 +2,6 @@
 /**
  * Template.php
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * (c) Christopher Simon
- *
  * @author Christopher Simon <mail@christopher-simon.de>
  */
 
@@ -33,6 +28,8 @@ class Template
      * @var array
      */
     protected $vars = array();
+
+    protected $escapedVars = array();
 
     /**
      * @var
@@ -90,7 +87,11 @@ class Template
     public function getTemplateVar($name)
     {
         if ($this->autoEscape === true) {
-            return $this->escape($this->vars[$name]);
+            if (isset($this->escapedVars[$name]) === false) {
+                $this->escapedVars[$name] = $this->escape($this->vars[$name]);
+            }
+
+            return $this->escapedVars[$name];
         }
 
         return $this->vars[$name];
@@ -104,6 +105,13 @@ class Template
      */
     public function escape($value)
     {
+        if (is_array($value) === true) {
+            foreach ($value as $valueKey => $valueValue) {
+                $value[$valueKey] = $this->escape($valueValue);
+            }
+
+            return $value;
+        }
         return filter_var($value, FILTER_SANITIZE_STRING, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     }
 
